@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "when2meet": {
+      "command": "python3",
+      "args": ["-m", "when2meet_mcp.server"],
+      "cwd": "/path/to/when2meet-mcp",
+      "env": {
+        "WHEN2MEET_AGENT_NAME": "Composer"
+      }
+    }
+  }
+}
