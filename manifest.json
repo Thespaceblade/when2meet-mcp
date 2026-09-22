@@ -1,0 +1,69 @@
+{
+  "manifest_version": "0.4",
+  "name": "when2meet-mcp",
+  "display_name": "When2Meet",
+  "version": "0.1.0",
+  "description": "Read and fill when2meet scheduling polls over plain HTTP — no browser required.",
+  "long_description": "MCP server for [when2meet](https://www.when2meet.com/) scheduling polls.\n\nPaste a poll link and ask your assistant to mark your availability from a weekly schedule or calendar busy blocks. Uses when2meet's HTTP endpoints directly — no browser automation.\n\nRecommended flow: `get_poll` → `fill_from_weekly_schedule` or `compute_availability_from_busy_times` (dry run) → `submit_availability`.",
+  "author": {
+    "name": "Jason Charwin",
+    "url": "https://github.com/Thespaceblade"
+  },
+  "homepage": "https://github.com/Thespaceblade/when2meet-mcp",
+  "documentation": "https://github.com/Thespaceblade/when2meet-mcp#readme",
+  "server": {
+    "type": "uv",
+    "entry_point": "when2meet_mcp/server.py",
+    "mcp_config": {
+      "command": "uv",
+      "args": ["run", "--directory", "${__dirname}", "-m", "when2meet_mcp.server"],
+      "env": {
+        "WHEN2MEET_AGENT_NAME": "${user_config.agent_name}"
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "get_poll",
+      "description": "Load a when2meet poll: title, participants, time range, and optional slot grid."
+    },
+    {
+      "name": "find_common_availability",
+      "description": "Find time slots where at least N participants are free."
+    },
+    {
+      "name": "fill_from_weekly_schedule",
+      "description": "Compute free slots from a recurring weekly busy schedule."
+    },
+    {
+      "name": "compute_availability_from_busy_times",
+      "description": "Compute free slots from ISO calendar busy intervals."
+    },
+    {
+      "name": "preview_availability",
+      "description": "Preview slot indices and bitmask without submitting."
+    },
+    {
+      "name": "submit_availability",
+      "description": "Log in and save availability to when2meet."
+    }
+  ],
+  "keywords": ["mcp", "when2meet", "scheduling", "calendar", "availability"],
+  "license": "MIT",
+  "compatibility": {
+    "claude_desktop": ">=0.10.0",
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": {
+      "python": ">=3.11"
+    }
+  },
+  "user_config": {
+    "agent_name": {
+      "type": "string",
+      "title": "Agent display name",
+      "description": "Label used for alternate participant names (e.g. Claude, Composer).",
+      "default": "Cursor",
+      "required": false
+    }
+  }
+}

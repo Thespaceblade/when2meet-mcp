@@ -59,7 +59,7 @@ Add to `~/.cursor/mcp.json` (or Claude Desktop config). Set `cwd` to wherever yo
     "when2meet": {
       "command": "python3",
       "args": ["-m", "when2meet_mcp.server"],
-      "cwd": "/Users/jasoncharwin/Projects/when2meet-mcp",
+      "cwd": "/Users/jasoncharwin/Personal Code Projects/MCPs/when2meet-mcp",
       "env": {
         "WHEN2MEET_AGENT_NAME": "Composer"
       }
@@ -71,6 +71,16 @@ Add to `~/.cursor/mcp.json` (or Claude Desktop config). Set `cwd` to wherever yo
 `WHEN2MEET_AGENT_NAME` is the label used when submitting under an alternate name (e.g. `Jason Charwin (Composer)` when the main entry has a password). Set it to `Claude`, `GPT-4`, `Gemini`, etc. Defaults to `Cursor`.
 
 See [`mcp.json.example`](mcp.json.example) for a copy-paste template.
+
+## Claude Desktop (.mcpb)
+
+Package for one-click install:
+
+```bash
+./scripts/pack-mcpb.sh
+```
+
+Then double-click `when2meet-mcp.mcpb` or drag it into Claude Desktop Settings. Uses the UV runtime — no manual `pip install` needed.
 
 ## Tools
 

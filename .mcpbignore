@@ -1,0 +1,19 @@
+# Dev and test files
+tests/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+
+# Git and local config
+.git/
+.DS_Store
+*.log
+.env
+.env.*
